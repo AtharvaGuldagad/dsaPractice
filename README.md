@@ -12,4 +12,10 @@ dsa-practice/
 │   ├── ContainsDuplicate/
 │   │   ├── Solution.java
 │   │   └── README.md
+│   ├── ValidAnagrams/
+│   │   ├── Solution.java
+│   │   └── README.md
+│   ├── TwoSum/
+│   │   ├── Solution.java
+│   │   └── README.md
 ...
