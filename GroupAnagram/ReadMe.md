@@ -17,8 +17,8 @@ I was fighting the syntax of predifined functions i saw on the internet
     |- sort this array (letters)
     |- create a new string (sortedKey) and add this sorted array
     |- check the map if it has the sorted version of this Key (current string)?
-    \- if yes then add it to the list of these strings
-     \- if no then add a new key (original word) and create a dynamic array for it and add the word regardless (current word)
+     \- if yes then add it to the list of these strings
+     /- if no then add a new key (original word) and create a dynamic array for it and add the word regardless (current word)
     |- return the Map values
 
     Failed but possible approach:
