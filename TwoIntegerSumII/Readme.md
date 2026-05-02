@@ -2,7 +2,7 @@
 
 # LeetCode 167: Two Sum II - Input Array Is Sorted
 
-## 💡 Intuition
+##  Intuition
 
 ### The Brute Force Approach
 The naive way to solve this problem is to use a nested loop to check every possible pair of numbers to see if they add up to the target. However, this approach yields a time complexity of $O(N^2)$. More importantly, it completely ignores the most crucial hint provided in the problem description: **the array is already sorted**. 
@@ -19,7 +19,7 @@ This eliminates the need to check every combination, narrowing the search space 
 
 ---
 
-## 📝 Algorithm Pseudocode
+##  Algorithm Pseudocode
 
 ```text
 Initialize left_pointer at index 0
@@ -43,35 +43,9 @@ WHILE left_pointer < right_pointer:
 // Default return if no solution is found (though problem guarantees exactly one solution)
 RETURN [1, 2] 
 ```
-
 ---
 
-## 💻 Java Solution
-
-```java
-class Solution {
-    public int[] twoSum(int[] numbers, int target) {
-        int i = 0;
-        int j = numbers.length - 1;
-        
-        while (i < j) {
-            if (numbers[i] + numbers[j] == target) {
-                return new int[] {i + 1, j + 1};
-            } else if (numbers[i] + numbers[j] > target) {
-                j--;
-            } else if (numbers[i] + numbers[j] < target) {
-                i++;
-            }
-        }
-        
-        return new int[] {1, 2};
-    }
-}
-```
-
----
-
-## ⏱️ Complexity Analysis
+##  Complexity Analysis
 
 * **Time Complexity:** $O(N)$
     * In the worst-case scenario, the left and right pointers will meet in the middle. We traverse the array exactly once, meaning the time complexity scales linearly with the size of the array.
