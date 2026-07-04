@@ -70,12 +70,3 @@ If the calculation tells us that the node to remove is the very first node in th
 9. Give back the original start of the list.
 
 ---
-
-## Complexity Analysis
-
-* **Time Complexity:** $O(N)$
-* We traverse the linked list of length $N$ at most two times. The first pass counts all $N$ elements, and the second pass walks at most $N - 1$ steps to find the deletion point. Since these passes happen sequentially and not nested within each other, the total time scales linearly with the number of nodes.
-
-
-* **Space Complexity:** $O(1)$
-* We only allocate a few primitive integer variables to track the lengths and loop counters, along with a pointer variable to traverse the nodes. No additional data structures are created, keeping the auxiliary space usage strictly constant regardless of the linked list size.
