@@ -36,8 +36,5 @@ By starting `res` at $n$ (the maximum bound) and continually adding the current 
 ## Complexity Analysis
 
 * **Time Complexity:** $O(n)$
-* We iterate through the array of length $n$ exactly once. Inside the loop, only basic arithmetic operations (addition and subtraction) are performed in $O(1)$ constant time. Thus, the total runtime scales linearly with $n$.
-
 
 * **Space Complexity:** $O(1)$
-* We only use a single primitive variable `res` to accumulate the net difference. No additional data structures or memory allocations are used, making the auxiliary space usage strictly constant.
