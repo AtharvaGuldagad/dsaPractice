@@ -1,5 +1,5 @@
 package Sumof2int;
-
+//Bit manipulation
 public class Solution {
     public int getSum(int a, int b) {
         while (b != 0) {
