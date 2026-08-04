@@ -1,5 +1,5 @@
 package NoOfOnes;
-
+//bitwise approach
 public class Solution {
     public int hammingWeight(int n) {
         int res = 0;
