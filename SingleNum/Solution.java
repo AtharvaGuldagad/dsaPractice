@@ -1,5 +1,5 @@
 package SingleNum;
-
+//Bit manipulation
 public class Solution {
     public int singleNumber(int[] nums) {
         int res=0;
