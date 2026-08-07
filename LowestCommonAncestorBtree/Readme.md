@@ -1,49 +1,46 @@
-# Subtree of Another Tree
+# Lowest Common Ancestor of a Binary Search Tree
 
 ## Intuition
 
-### Tree Matching via Recursive Search
+### The Split Point in a BST
 
-To determine if `subRoot` is a valid subtree of `root`, we need to find a node somewhere inside `root` that acts as the starting point for a tree structure identical to `subRoot`.
+In a Binary Search Tree (BST), every node follows a strict ordering property:
 
-The problem naturally breaks down into two core checks:
+* All values in the **left subtree** are strictly smaller than the node's value.
+* All values in the **right subtree** are strictly larger than the node's value.
 
-1. **Primary Search (`isSubtree`):** Traverses through every node in `root` to test if that node could be the root of a matching subtree.
-2. **Structural Equality (`sameTree`):** A helper function that takes two node references and checks if the trees rooted at those nodes are exact matches in both structure and node values.
+Because of this property, finding the Lowest Common Ancestor (LCA) of two nodes $p$ and $q$ boils down to finding the **split point** where $p$ and $q$ diverge:
 
-For every node we visit in `root`, we check if `sameTree(root, subRoot)` is true. If it matches, we are done. If it doesn't, we recursively search down `root.left` and `root.right` to see if a match exists further down.
+1. **Both $p$ and $q$ are smaller than `curr`:** The LCA must lie somewhere in the left subtree. We step left.
+2. **Both $p$ and $q$ are larger than `curr`:** The LCA must lie somewhere in the right subtree. We step right.
+3. **One node is smaller and the other is larger (or `curr` equals $p$ or $q$):** `curr` is the exact split point where $p$ and $q$ branch off in opposite directions (or one is an ancestor of the other). Thus, `curr` is guaranteed to be the Lowest Common Ancestor.
+
+By converting the recursive approach into an **iterative loop**, we eliminate the function call stack entirely, achieving optimal $O(1)$ constant auxiliary space.
 
 ---
 
 ## Step-by-Step Guide
 
-1. **Base Cases (`isSubtree`):**
-* If `subRoot` is `null`, it is trivially a subtree of any tree—return `true`.
-* If `root` is `null` (and `subRoot` is not), `subRoot` cannot exist inside an empty tree—return `false`.
+1. Start a traversal pointer `curr` at the `root` node of the BST.
+2. Enter a loop that continues as long as `curr` is not `null`:
+* Compare the values of $p$ and $q$ against `curr.val`.
+* **If both values are strictly smaller (`p.val < curr.val && q.val < curr.val`):** Both target nodes reside in the left branch. Move `curr` to `curr.left`.
+* **If both values are strictly larger (`p.val > curr.val && q.val > curr.val`):** Both target nodes reside in the right branch. Move `curr` to `curr.right`.
+* **Otherwise (The Split Point):** You have found the lowest node that serves as a common ancestor. Return `curr` immediately.
 
 
-2. **Current Node Check:**
-* Call `sameTree(root, subRoot)`. If it returns `true`, we found an exact match starting at the current node. Return `true`.
-
-
-3. **Recursive Search:**
-* If the current node doesn't match, check if `subRoot` is a subtree of the left child (`isSubtree(root.left, subRoot)`) **OR** the right child (`isSubtree(root.right, subRoot)`).
-
-
-4. **Helper Logic (`sameTree`):**
-* If both nodes are `null`, return `true`.
-* If both nodes are non-null and have identical values (`root.val == subRoot.val`), recursively verify that both their left subtrees and right subtrees match.
-* Otherwise, return `false`.
-
-
+3. If the loop terminates without finding a split point, return `null`.
 
 ---
 
 ## Complexity Analysis
 
-* **Time Complexity:** $O(N \times M)$
-* Let $N$ be the number of nodes in `root` and $M$ be the number of nodes in `subRoot`. In the worst-case scenario (such as a tree where many nodes share identical values with `subRoot`), `isSubtree` visits all $N$ nodes, and for each node, `sameTree` scans up to $M$ nodes.
+* **Time Complexity:** $O(H)$
+* Where $H$ is the height of the Binary Search Tree. At each step of the traversal, we eliminate one whole subtree (either left or right), moving down one level in the tree.
+* **Balanced Tree:** $H = O(\log N)$, where $N$ is the total number of nodes.
+* **Skewed Tree (Worst-Case):** $H = O(N)$, when the tree degenerates into a single long line.
 
 
-* **Space Complexity:** $O(H_{root})$
-* The auxiliary space is determined by the call stack depth, where $H_{root}$ is the height of `root`. In a completely skewed tree, this requires $O(N)$ space, whereas a balanced tree requires $O(\log N)$ space.
+* **Space Complexity:**
+* **Iterative Approach:** $O(1)$ constant auxiliary space, as it only uses a single pointer (`curr`) without allocating call stack memory.
+* **Recursive Approach:** $O(H)$ auxiliary space to maintain the recursion call stack.
