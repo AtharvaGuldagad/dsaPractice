@@ -1,4 +1,5 @@
-public class TrieNode {
+package WordSearchI;
+class TrieNode {
 
     TrieNode[] children;
     boolean word;
@@ -9,11 +10,11 @@ public class TrieNode {
     }
 }
 
-public class WordDictionary {
+public class WordSearchI {
 
     private TrieNode root;
 
-    public WordDictionary() {
+    public WordSearchI() {
         root = new TrieNode();
     }
 
