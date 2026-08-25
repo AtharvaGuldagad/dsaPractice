@@ -10,11 +10,11 @@ class TrieNode {
     }
 }
 
-public class WordSearchI {
+public class Solution {
 
     private TrieNode root;
 
-    public WordSearchI() {
+    public void WordSearchI() {
         root = new TrieNode();
     }
 

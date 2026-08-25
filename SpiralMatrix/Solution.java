@@ -1,4 +1,9 @@
-class Solution {
+package SpiralMatrix;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         int m=matrix.length, n=matrix[0].length;
         List<Integer> res= new ArrayList<>();
