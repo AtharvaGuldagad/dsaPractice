@@ -25,21 +25,6 @@ By reversing our traversal direction and working **Right-to-Left**, we can optim
 
 3. Return `arr`.
 
-```java
-class Solution {
-    public int[] replaceElements(int[] arr) {
-        int maxSoFar = -1;
-        for (int i = arr.length - 1; i >= 0; i--) {
-            int tempVal = arr[i];
-            arr[i] = maxSoFar;
-            maxSoFar = Math.max(maxSoFar, tempVal);
-        }
-        return arr;
-    }
-}
-
-```
-
 ---
 
 ## Complexity Analysis
