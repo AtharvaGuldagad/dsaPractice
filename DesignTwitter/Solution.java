@@ -2,6 +2,7 @@ package DesignTwitter;
 
 import java.util.*;
 
+// who even asks ts in interviews? lmfaoo
 
 public class Solution {
 
